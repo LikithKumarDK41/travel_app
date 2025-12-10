@@ -1,13 +1,16 @@
-
 import 'package:flutter/material.dart';
 import '../../core/app_colors.dart';
 import '../../layout/header.dart';
+import '../../core/localization/app_localizations.dart';
 
 class AppFooter extends StatelessWidget {
   const AppFooter({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final isDesktop = MediaQuery.of(context).size.width > 600;
+
     return Container(
       color: AppColors.primaryGreen,
       padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
@@ -21,18 +24,17 @@ class AppFooter extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "NARA GUIDE",
-                      style: TextStyle(
+                    Text(
+                      l10n.get('app_title'),
+                      style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        letterSpacing: 2,
                       ),
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      "Your ultimate companion for exploring the ancient capital of Japan. Discover serenity, history, and nature.",
+                      l10n.get('footer_desc'),
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.7),
                         height: 1.5,
@@ -41,16 +43,16 @@ class AppFooter extends StatelessWidget {
                   ],
                 ),
               ),
-              if (MediaQuery.of(context).size.width > 600) ...[
+              if (isDesktop) ...[
                 const SizedBox(width: 40),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildFooterTitle("Company"),
-                      _buildFooterLink("About Us"),
-                      _buildFooterLink("Careers"),
-                      _buildFooterLink("Contact"),
+                      _buildFooterTitle(l10n.get('footer_company')),
+                      _buildFooterLink(l10n.get('footer_about')),
+                      _buildFooterLink(l10n.get('footer_careers')),
+                      _buildFooterLink(l10n.get('footer_contact')),
                     ],
                   ),
                 ),
@@ -58,14 +60,14 @@ class AppFooter extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildFooterTitle("Legal"),
-                      _buildFooterLink("Terms"),
-                      _buildFooterLink("Privacy"),
-                      _buildFooterLink("Cookies"),
+                      _buildFooterTitle(l10n.get('footer_legal')),
+                      _buildFooterLink(l10n.get('footer_terms')),
+                      _buildFooterLink(l10n.get('footer_privacy')),
+                      _buildFooterLink(l10n.get('footer_cookies')),
                     ],
                   ),
                 ),
-              ]
+              ],
             ],
           ),
           const SizedBox(height: 40),
@@ -75,7 +77,7 @@ class AppFooter extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "© 2024 Nara Guide. All rights reserved.",
+                l10n.get('footer_copyright'),
                 style: TextStyle(
                   color: Colors.white.withValues(alpha: 0.5),
                   fontSize: 12,
@@ -89,9 +91,9 @@ class AppFooter extends StatelessWidget {
                   const SizedBox(width: 12),
                   _buildSocialIcon(Icons.alternate_email), // Twitter-like
                 ],
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );
@@ -125,10 +127,6 @@ class AppFooter extends StatelessWidget {
   }
 
   Widget _buildSocialIcon(IconData icon) {
-    return Icon(
-      icon,
-      color: Colors.white,
-      size: 20,
-    );
+    return Icon(icon, color: Colors.white, size: 20);
   }
 }

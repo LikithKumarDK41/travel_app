@@ -1,13 +1,22 @@
-
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Nara Nature Palette
-  static const Color primaryGreen = Color(0xFF2E5B3E); // Moss Green of Nara Park
-  static const Color accentBrown = Color(0xFF8D6E63); // Deer fur brown
-  static const Color background = Color(0xFFF9F9F7); // Washi paper white
-  static const Color textDark = Color(0xFF1F1F1F); // Sumi ink black
-  static const Color textLight = Color(0xFFF5F5F0);
-  static const Color sakuraPink = Color(0xFFFCE4EC); // Subtle cherry blossom
-  static const Color templeRed = Color(0xFFC62828); // Torii gate red
+  // Gose City Brand Palette
+  static const Color primaryTeal = Color(0xFF00A896);
+  static const Color secondaryPink = Color(0xFFFF8FA3);
+  static const Color accentYellow = Color(0xFFFFC857);
+  static const Color softGreen = Color(0xFFA0E8AF);
+
+  static const Color background = Color(0xFFFAFAFA);
+  static const Color surface = Colors.white;
+
+  static const Color textDark = Color(0xFF2D3142);
+  static const Color textGrey = Color(0xFF909497);
+
+  // Backwards Compatibility Aliases
+  static const Color primaryGreen = primaryTeal;
+  static const Color accentBrown = Color(
+    0xFF8D6E63,
+  ); // Keeping a brown for now or use textDark
+  static const Color sakuraPink = secondaryPink;
 }

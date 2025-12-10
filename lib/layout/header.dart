@@ -1,19 +1,17 @@
-
 import 'package:flutter/material.dart';
 import '../../core/app_colors.dart';
+import '../../core/localization/app_localizations.dart';
 
 class AppHeader extends StatelessWidget {
   final VoidCallback? onMenuPressed;
   final bool isTransparent;
 
-  const AppHeader({
-    super.key,
-    this.onMenuPressed,
-    this.isTransparent = false,
-  });
+  const AppHeader({super.key, this.onMenuPressed, this.isTransparent = false});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Container(
       height: 70, // Slightly taller for premium feel
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -47,10 +45,14 @@ class AppHeader extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: isTransparent ? Colors.white70 : Colors.grey.shade300,
+                    color: isTransparent
+                        ? Colors.white70
+                        : Colors.grey.shade300,
                   ),
                   borderRadius: BorderRadius.circular(12),
-                  color: isTransparent ? Colors.black.withValues(alpha: 0.1) : Colors.white,
+                  color: isTransparent
+                      ? Colors.black.withValues(alpha: 0.1)
+                      : Colors.white,
                 ),
                 child: Icon(
                   Icons.menu_rounded,
@@ -59,19 +61,17 @@ class AppHeader extends StatelessWidget {
               ),
             ),
           ),
-          
+
           const Spacer(),
 
           // Title (Optional, maybe just showing it in non-transparent mode)
           if (!isTransparent)
-             Text(
-              "NARA",
+            Text(
+              l10n.get('splash_title'),
               style: TextStyle(
-                fontFamily: 'serif', // Use a serif font if available or default
-                fontWeight: FontWeight.bold,
                 fontSize: 20,
-                letterSpacing: 2,
-                color: AppColors.primaryGreen,
+                fontWeight: FontWeight.bold,
+                color: isTransparent ? Colors.white : AppColors.textDark,
               ),
             ),
 
@@ -90,17 +90,15 @@ class AppHeader extends StatelessWidget {
                 height: 40,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 2,
-                  ),
+                  border: Border.all(color: Colors.white, width: 2),
                   image: const DecorationImage(
                     image: NetworkImage(
-                        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"),
+                      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ],
@@ -113,8 +111,8 @@ class AppHeader extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: isTransparent 
-            ? Colors.black.withValues(alpha: 0.1) 
+        color: isTransparent
+            ? Colors.black.withValues(alpha: 0.1)
             : Colors.grey.shade100,
       ),
       child: Icon(

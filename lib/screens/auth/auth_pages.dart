@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import '../../core/app_colors.dart';
 import '../landing/landing_page.dart';
+import '../../core/localization/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,13 +16,15 @@ class _LoginPageState extends State<LoginPage> {
 
   void _handleLogin() {
     // Navigate to Dashboard
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const LandingPage()),
-    );
+    Navigator.of(
+      context,
+    ).pushReplacement(MaterialPageRoute(builder: (_) => const LandingPage()));
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Row(
@@ -34,7 +36,8 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(
-                        "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1200"),
+                      "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1200",
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -44,28 +47,28 @@ class _LoginPageState extends State<LoginPage> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Colors.black.withValues(alpha: 0.3),
-                        AppColors.primaryGreen.withValues(alpha: 0.8),
+                        Colors.black.withOpacity(0.3),
+                        AppColors.primaryTeal.withOpacity(0.8),
                       ],
                     ),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "NARA GUIDE",
-                          style: TextStyle(
+                          l10n.get('app_title'),
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 48,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 4,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Text(
-                          "Journey to Serenity",
-                          style: TextStyle(
+                          l10n.get('splash_tagline'),
+                          style: const TextStyle(
                             color: Colors.white70,
                             fontSize: 20,
                           ),
@@ -88,24 +91,24 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const Text(
-                        "Welcome Back",
-                        style: TextStyle(
+                      Text(
+                        l10n.get('welcome_back'),
+                        style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.textDark,
+                          color: AppColors.primaryTeal,
                         ),
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        "Please sign in to continue your journey.",
+                        l10n.get('sign_in_subtitle'),
                         style: TextStyle(color: Colors.grey.shade600),
                       ),
                       const SizedBox(height: 40),
                       TextField(
                         controller: _emailController,
                         decoration: InputDecoration(
-                          labelText: "Email Address",
+                          labelText: l10n.get('email'),
                           prefixIcon: const Icon(Icons.email_outlined),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -117,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                         controller: _passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
-                          labelText: "Password",
+                          labelText: l10n.get('password'),
                           prefixIcon: const Icon(Icons.lock_outline),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -129,9 +132,11 @@ class _LoginPageState extends State<LoginPage> {
                         alignment: Alignment.centerRight,
                         child: TextButton(
                           onPressed: () {},
-                          child: const Text(
-                            "Forgot Password?",
-                            style: TextStyle(color: AppColors.primaryGreen),
+                          child: Text(
+                            l10n.get('forgot_password'),
+                            style: const TextStyle(
+                              color: AppColors.primaryTeal,
+                            ),
                           ),
                         ),
                       ),
@@ -139,15 +144,15 @@ class _LoginPageState extends State<LoginPage> {
                       ElevatedButton(
                         onPressed: _handleLogin,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primaryGreen,
+                          backgroundColor: AppColors.primaryTeal,
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
-                        child: const Text(
-                          "Sign In",
-                          style: TextStyle(
+                        child: Text(
+                          l10n.get('login_btn'),
+                          style: const TextStyle(
                             fontSize: 16,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -161,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: Text(
-                              "OR",
+                              l10n.get('or_text'),
                               style: TextStyle(color: Colors.grey.shade400),
                             ),
                           ),
@@ -172,7 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                       OutlinedButton.icon(
                         onPressed: () {},
                         icon: const Icon(Icons.g_mobiledata, size: 28),
-                        label: const Text("Continue with Google"),
+                        label: Text(l10n.get('continue_with_google')),
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           side: BorderSide(color: Colors.grey.shade300),
@@ -186,18 +191,19 @@ class _LoginPageState extends State<LoginPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text("Don't have an account?"),
+                          Text(l10n.get('no_account_prompt')),
                           TextButton(
                             onPressed: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                    builder: (_) => const RegisterPage()),
+                                  builder: (_) => const RegisterPage(),
+                                ),
                               );
                             },
-                            child: const Text(
-                              "Create Account",
-                              style: TextStyle(
-                                color: AppColors.primaryGreen,
+                            child: Text(
+                              l10n.get('register_link'),
+                              style: const TextStyle(
+                                color: AppColors.primaryTeal,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -221,6 +227,8 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -237,9 +245,9 @@ class RegisterPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Text(
-                  "Create Account",
-                  style: TextStyle(
+                Text(
+                  l10n.get('join_title'),
+                  style: const TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                     color: AppColors.textDark,
@@ -247,13 +255,13 @@ class RegisterPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Join us to explore the ancient capital.",
+                  l10n.get('join_subtitle'),
                   style: TextStyle(color: Colors.grey.shade600),
                 ),
                 const SizedBox(height: 40),
                 TextField(
                   decoration: InputDecoration(
-                    labelText: "Full Name",
+                    labelText: l10n.get('full_name'),
                     prefixIcon: const Icon(Icons.person_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -263,7 +271,7 @@ class RegisterPage extends StatelessWidget {
                 const SizedBox(height: 20),
                 TextField(
                   decoration: InputDecoration(
-                    labelText: "Email Address",
+                    labelText: l10n.get('email'),
                     prefixIcon: const Icon(Icons.email_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -274,7 +282,7 @@ class RegisterPage extends StatelessWidget {
                 TextField(
                   obscureText: true,
                   decoration: InputDecoration(
-                    labelText: "Password",
+                    labelText: l10n.get('password'),
                     prefixIcon: const Icon(Icons.lock_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -291,18 +299,33 @@ class RegisterPage extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryGreen,
+                    backgroundColor: AppColors.primaryTeal,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text(
-                    "Sign Up",
-                    style: TextStyle(
+                  child: Text(
+                    l10n.get('register_btn'),
+                    style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Center(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      l10n.get('login_link'),
+                      style: const TextStyle(
+                        color: AppColors.primaryTeal,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
