@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/app_colors.dart';
-import '../landing/landing_page.dart';
 import '../../core/localization/app_localizations.dart';
+import '../main_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
     // Navigate to Dashboard
     Navigator.of(
       context,
-    ).pushReplacement(MaterialPageRoute(builder: (_) => const LandingPage()));
+    ).pushReplacement(MaterialPageRoute(builder: (_) => const MainScreen()));
   }
 
   @override
@@ -294,7 +294,7 @@ class RegisterPage extends StatelessWidget {
                   onPressed: () {
                     // Navigate to Dashboard
                     Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (_) => const LandingPage()),
+                      MaterialPageRoute(builder: (_) => const MainScreen()),
                       (route) => false,
                     );
                   },

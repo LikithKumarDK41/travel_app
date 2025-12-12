@@ -42,7 +42,17 @@ class AppLocalizations {
           'Explore ancient trails, majestic mountains, and the serene shrines of Gose.',
       'nav_title': 'Gose City Guide',
       'nav_subtitle': 'Your official guide to local myths and legends.',
+      'hero_title_1': 'Discover the \nBirthplace of Japan',
+      'hero_subtitle_1':
+          'Explore ancient trails, majestic mountains, and the serene shrines of Gose.',
+      'hero_title_2': 'Walk Through \nLiving History',
+      'hero_subtitle_2':
+          'Experience the timeless atmosphere of traditional streets and temples.',
+      'hero_title_3': 'Taste the \nFlavors of Gose',
+      'hero_subtitle_3':
+          'Savor authentic local cuisine and traditional sake breweries.',
       'categories_title': 'Explore Categories',
+      'other_options': 'Other Options',
       'popular_title': 'Popular Tours & Trails',
       'view_all': 'View All',
       'no_tours': 'No tours found available.',
@@ -68,6 +78,9 @@ class AppLocalizations {
       // Sidebar
       'menu_home': 'Home',
       'menu_tours': 'My Tours',
+      'menu_tour_list': 'Tour List',
+      'menu_bookmarks': 'Bookmarks',
+      'menu_info': 'Info',
       'menu_map': 'Map',
       'menu_profile': 'Profile',
       'menu_settings': 'Settings',
@@ -89,6 +102,7 @@ class AppLocalizations {
       // Not Found
       'not_found_message': 'Page Not Found',
       'go_home': 'Go Home',
+      'details_btn': 'Details',
     },
     'ja': {
       'app_title': '御所市観光ツアー',
@@ -118,7 +132,14 @@ class AppLocalizations {
       'hero_subtitle': '古代の道、雄大な山々、そして静寂な神社を探索しましょう。',
       'nav_title': '御所市観光ナビ',
       'nav_subtitle': '神話と伝説の公式ガイド',
+      'hero_title_1': '日本発祥の地を\n発見する',
+      'hero_subtitle_1': '古代の道、雄大な山々、そして静寂な神社を探索しましょう。',
+      'hero_title_2': '生きた歴史を\n歩く',
+      'hero_subtitle_2': '伝統的な町並みと寺院の時代を超えた雰囲気を感じてください。',
+      'hero_title_3': '御所の味を\n堪能する',
+      'hero_subtitle_3': '本格的な郷土料理と伝統的な酒蔵を味わってください。',
       'categories_title': 'カテゴリーを探す',
+      'other_options': 'その他のオプション',
       'popular_title': '人気のツアーとコース',
       'view_all': 'すべて見る',
       'no_tours': '利用可能なツアーが見つかりません。',
@@ -144,6 +165,9 @@ class AppLocalizations {
       // Sidebar
       'menu_home': 'ホーム',
       'menu_tours': 'マイツアー',
+      'menu_tour_list': 'ツアー一覧',
+      'menu_bookmarks': 'ブックマーク',
+      'menu_info': '案内',
       'menu_map': '地図',
       'menu_profile': 'プロフィール',
       'menu_settings': '設定',
@@ -164,6 +188,7 @@ class AppLocalizations {
       // Not Found
       'not_found_message': 'ページが見つかりません',
       'go_home': 'ホームへ戻る',
+      'details_btn': '詳細',
     },
   };
 

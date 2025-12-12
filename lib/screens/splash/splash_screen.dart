@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/app_colors.dart';
 import '../auth/auth_pages.dart';
-import '../../core/localization/app_localizations.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -47,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    // final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: AppColors.primaryGreen,
@@ -81,9 +80,9 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
                 const SizedBox(height: 24),
                 // Title
-                Text(
-                  l10n.get('gose_city_title'),
-                  style: const TextStyle(
+                const Text(
+                  "御所市",
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,
                     fontWeight: FontWeight.w900,
@@ -92,9 +91,9 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
                 const SizedBox(height: 8),
                 // Tagline
-                Text(
-                  l10n.get('splash_tagline'),
-                  style: const TextStyle(
+                const Text(
+                  "神話と伝説の里",
+                  style: TextStyle(
                     color: Colors.white70,
                     fontSize: 16,
                     letterSpacing: 1.2,
